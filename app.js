@@ -21,13 +21,13 @@ http.createServer((request, response)=>{
     response.write( '4, Pedro' );
 
 
-    const persona = {
-        id:1,
-        nombre: 'Fernando'
-    }
+    // const persona = {
+    //     id:1,
+    //     nombre: 'Fernando'
+    // }
 
-    response.write('404 | Page not found ');
-    response.write(JSON.stringify(persona));
+    // response.write('404 | Page not found ');
+    // response.write(JSON.stringify(persona));
 
     response.end();
 
