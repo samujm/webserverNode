@@ -1,44 +1,19 @@
-const http = require('http');
-// import http from 'http';
+const express = require("express");
+const app = express();
+const port = 8080;
 
-//CREA EL SERVIDOR
-http.createServer((request, response)=>{
-    //request: informacion que están solicitando, toda la informacion del url que me están pidiendo en el sitio web, headers de la peticion, argumentos, etc
-    //response: lo que el servidor va a responder
-    
-    // console.log(request);
+app.get("/", (req, res)=> {
+    res.send("Home page");
+});
 
-    // request.setHeader('Content-Disposition', 'attachment; filename=lista.csv');
-    
+app.get("/hola-mundo", (req, res)=> {
+    res.send("Hola mundo en su respectiva ruta");
+});
 
-    // response.writeHead(404);
-    // response.writeHead(200, {'Content-Type': 'text/plain'});
-    // response.writeHead(200, {'Content-Type': 'application/json'});
-    response.setHeader('Content-Disposition', 'attachment; filename=lista.csv');
-    response.writeHead(200, {'Content-Type': 'application/csv'});
+app.get("*", (req, res)=> {
+    res.send("404 | Page not found");
+});
 
-
-    // const persona = {
-    //     id:1,
-    //     nombre: 'Fernando'
-    // }
-
-    response.write( 'id, nombre\n' );
-    response.write( '1, Fernando\n' );
-    response.write( '2, Maria\n' );
-    response.write( '3, Juan\n' );
-    response.write( '4, Pedro\n' );
-
-
-    // response.write('404 | Page not found ');
-
-    //Serializar como un json
-    // response.write(JSON.stringify(persona));
-    // response.write('Hola Mundo');
-
-    response.end();
-
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
 })
-.listen( 8080 );
-
-console.log('Escuchando el puerto', 8080);
