@@ -8,17 +8,14 @@ http.createServer((request, response)=>{
     
     // console.log(request);
 
-
     // request.setHeader('Content-Disposition', 'attachment; filename=lista.csv');
-    Response.setHeader("Content-Disposition", "attachment;filename=lista.csv");
+    
 
+    // response.writeHead(404);
+    // response.writeHead(200, {'Content-Type': 'text/plain'});
+    // response.writeHead(200, {'Content-Type': 'application/json'});
+    response.setHeader('Content-Disposition', 'attachment; filename=lista.csv');
     response.writeHead(200, {'Content-Type': 'application/csv'});
-
-    response.write( 'id, nombre' );
-    response.write( '1, Fernando' );
-    response.write( '2, Maria' );
-    response.write( '3, Juan' );
-    response.write( '4, Pedro' );
 
 
     // const persona = {
@@ -26,8 +23,18 @@ http.createServer((request, response)=>{
     //     nombre: 'Fernando'
     // }
 
+    response.write( 'id, nombre\n' );
+    response.write( '1, Fernando\n' );
+    response.write( '2, Maria\n' );
+    response.write( '3, Juan\n' );
+    response.write( '4, Pedro\n' );
+
+
     // response.write('404 | Page not found ');
+
+    //Serializar como un json
     // response.write(JSON.stringify(persona));
+    // response.write('Hola Mundo');
 
     response.end();
 
